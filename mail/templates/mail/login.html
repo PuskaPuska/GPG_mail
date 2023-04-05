@@ -1,0 +1,31 @@
+{% extends "mail/layout.html" %}
+
+{% block body %}
+
+    <h2 class="mb-3 mt-5">Login</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input autofocus class="form-control rounded-0 mb-2" type="email" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input class="form-control rounded-0 mb-3" type="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-center">
+            <input class="btn btn-primary rounded-0 mb-2" type="submit" value="Login">
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-center ">
+            Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+        </div>
+    </form>
+
+   
+
+{% endblock %}
